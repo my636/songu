@@ -1,0 +1,33 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*个人设置*/
+.set-section .item-set{margin:15px 20px 0}
+.item-set{color:#999;border:#F2F2F2 solid 1px}
+.item-set .set-fold{color:#535353;background:#fbfbfb;height:18px;line-height:18px;padding:15px 20px}
+.item-set .set-fold h3{float:left;height:18px;line-height:18px}
+.item-set .set-fold span{float:right;margin:5px 0 0}
+.item-black .set-item-info{padding:20px}
+.item-domain {border:none 0;padding:20px;text-align:center}
+.item-domain p{padding:10px 0 0}
+.item-domain .s-txt, .item-domain .s-txt-focus{margin:0 5px;width:300px}
+
+.form-set{padding:20px;color:#999}
+.form-set .s-txt, .item-set .s-txt, .form-set .s-txt-focus, .item-set .s-txt-focus{vertical-align:middle}
+.form-set dd{padding:5px 0}
+.form-set dd:after, .item-set dd:after{clear: both;content: ".";display: block;height: 0;visibility: hidden}
+.form-set dd .form-tt{float:left;display:block;width:80px;height:18px;line-height:18px;padding:3px 5px 3px 0;text-align:right}
+.form-set dd .form-row{margin:0 0 0 80px;padding:3px 0;line-height:18px}
+.form-set dd .form-row label{padding:0 30px 0 0}
+.form-set dd .btn-green{margin:0 0 0 85px;_margin:0 0 0 88px}
+.form-set dd .form-row .s-textarea, .form-set dd .form-row .s-textarea-focus{width:550px;height:70px;overflow-y:auto}
+.set-item-info .form-avatar dd{padding:5px 0}
+.form-tag{padding:20px}
+.form-tag dd{zoom:1}
+.form-tag p{padding:5px 0 0}
+.form-work textarea{width:590px;height:70px;overflow-y:auto}
+.form-tag .s-txt, .form-tag .s-txt-focus{width:500px}
+.form-work .s-txt, .form-work .s-txt-focus{width:250px}
+.form-contact .s-txt, .form-contact .s-txt-focus{width:250px}
+.form-privacy .s-ck{margin:-2px 5px 0 5px}
+.form-privacy .form-row label{display:block;margin:5px 0 0}

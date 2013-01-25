@@ -1,0 +1,169 @@
+<include file="__THEME__/admin_header" />
+<div id="container" class="so_main">
+    <div class="page_tit">
+        <div class="right">
+            <neq name="back_id" value="-1"><a href="{:U('channel/Admin/index', array('pid'=>$back_id))}" class="btn_a"><span>返回</span></a></neq>
+        </div>
+        {$pageTitle}
+    </div>
+
+    <php>if(!empty($pageTab)):</php>
+    <div class="tit_tab">
+        <ul>
+        <php> !$_REQUEST['tabHash'] && $_REQUEST['tabHash'] =  $pageTab[0]['tabHash'];</php>
+        <volist name='pageTab' id='t'>
+            <li><a href="{$t.url}&tabHash={$t.tabHash}" <php> if($t['tabHash'] == $_REQUEST['tabHash']){ echo 'class="on"';}</php>>{$t.title}</a></li>
+        </volist>
+        </ul>
+    </div>
+    <php>endif;</php>
+
+    <div class="Toolbar_inbox">
+        <a href="{:U('channel/Admin/admin_blog',array('tabHash'=>'admin_blog','status'=>'0'))}" class="btn_a"><span>已审核内容</span></a>
+        <a href="{:U('channel/Admin/admin_blog',array('tabHash'=>'admin_blog','status'=>'1'))}" class="btn_a"><span>未审核内容</span></a>
+        <a href="javascript:void(0);" class="btn_a" onclick="reviewMany();"><span>审核</span></a>
+        <a href="javascript:void(0);" class="btn_a" onclick="del();"><span>删除</span></a>
+        <div class="page right">{$html}</div>
+    </div>
+
+    <div class="list">
+        <table id="category_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <th style="width:30px;">
+                <input type="checkbox" id="checkbox_handle" onclick="checkAll(this)" value="0">
+                <label for="checkbox"></label>
+            </th>
+            <th class="line_l">博客ID</th>
+            <th class="line_l">博客作者</th>
+            <th class="line_l">内容</th>
+            <th class="line_l">操作</th>
+        </tr>
+
+        <volist id="vo" name="data">
+        <tr overstyle='on' id="category_{$vo.feed_id}">
+            <td><input type="checkbox" name="checkbox" id="checkbox2" onclick="checkon(this)" value="{$vo.feed_id}"></td>
+            <td>{$vo.feed_id}</td>
+            <td>{$vo.uname}</td>
+            <td><div style="float:left"><span id="category_title_{$vo.feed_id}">{$vo.data}</span></div></td>
+            <td>
+                <eq name="vo.status" value="1"><a href="javascript:void(0);" onclick="review({$vo['feed_id']},{$vo['status']});">已审核</a> </eq>
+                <eq name="vo.status" value="0"><a href="javascript:void(0);" onclick="review({$vo['feed_id']},{$vo['status']});" style="color:red">未审核</a> </eq>
+            </td>
+        </tr>
+        </volist>
+        </table>
+    </div>
+
+    <div class="Toolbar_inbox">
+        <neq name="back_id" value="-1"><a href="{:U('channel/Admin/index', array('pid'=>$back_id))}" class="btn_a"><span>返回</span></a></neq>
+        <!-- <a href="javascript:void(0);" class="btn_a" onclick="add();"><span>搜索</span></a> -->
+        <a href="javascript:void(0);" class="btn_a" onclick="reviewMany();"><span>审核</span></a>
+        <a href="javascript:void(0);" class="btn_a" onclick="del();"><span>删除</span></a>
+        <div class="page right">{$html}</div>
+    </div>
+</div>
+
+<script type="text/javascript">
+// 鼠标移动表格效果
+$(document).ready(function() {
+    $("tr[overstyle='on']").hover(
+        function() {
+            $(this).addClass("bg_hover");
+        },
+        function() {
+            $(this).removeClass("bg_hover");
+        }
+    );
+});
+// 选中单个
+var checkon = function(o)
+{
+    if(o.checked == true) {
+        $(o).parents('tr').addClass('bg_on');
+    } else {
+        $(o).parents('tr').removeClass('bg_on');
+    }
+};
+// 全选操作
+var checkAll = function(o)
+{
+    if(o.checked == true) {
+        $('input[name="checkbox"]').attr('checked', 'true');
+        $('tr[overstyle="on"]').addClass("bg_on");
+    } else {
+        $('input[name="checkbox"]').removeAttr('checked');
+        $('tr[overstyle="on"]').removeClass("bg_on");
+    }
+};
+// 获取已选择的checked
+var getChecked = function() {
+    var gids = new Array();
+    $.each($('input:checked'), function(i, n) {
+        gids.push($(n).val());
+    });
+    return gids;
+};
+// 删除分类
+var del = function(feed_id)
+{
+    feed_id = feed_id ? feed_id : getChecked();
+    feed_id = feed_id.toString();
+    // 验证数据
+    if(feed_id == '' || getLength(feed_id) < 1) {
+        ui.error('请选择博客');
+        return false;
+    }
+    // 删除操作
+    if(confirm('确定删除选中博客？')) { 
+        // 提交删除
+        $.post("{:U('channel/Admin/delFeed')}", {feed_id:feed_id}, function(res) {
+            if(res.status == 1) {
+                feed_id = feed_id.split(',');
+                $.each(feed_id, function(i, n) {
+                    $('#category_' + n).remove();
+                });
+                ui.success('删除成功');
+                return false;
+            } else {
+                ui.error('删除失败');
+                return false;
+            }
+        }, 'json');
+    }
+};
+
+var review = function (feed_id,status){
+    $.post("{:U('channel/Admin/review')}", {feed_id:feed_id,status:status}, function(res) {
+        if(res == true){
+            ui.success('设置成功');
+            setTimeout(function(){window.location.reload()},800);
+        }else{
+            ui.error('设置失败');
+        }
+    });
+}
+
+var reviewMany = function(feed_id){
+    feed_id = feed_id ? feed_id : getChecked();
+    feed_id = feed_id.toString();
+    // 验证数据
+    if(feed_id == '' || getLength(feed_id) < 1) {
+        ui.error('请选择博客');
+        return false;
+    }
+    // 删除操作
+    if(confirm('确定审核通过选中博客？')) { 
+        // 提交删除
+        $.post("{:U('channel/Admin/reviewMany')}", {feed_id:feed_id}, function(res) {
+            if(res == true){
+            ui.success('设置成功');
+            setTimeout(function(){window.location.reload()},800);
+            }else{
+                ui.error('设置失败');
+            }
+        });
+    }
+}
+</script>
+
+<include file="__THEME__/admin_footer" />

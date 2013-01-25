@@ -1,0 +1,37 @@
+<include file="__THEME__/public_header" />
+
+<div id="page-wrap">
+	<div class="reg-wrap">
+		<!--<div class="title">{:L('PUBLIC_FOLLOW_THE_PEOPLE_INTERESTED')}</div>-->
+		<div class="reg-main">
+			<!--注册步骤-->
+			<div class="article article-avatar boxShadow">
+				<div class="item-step4">
+					<div class="step">
+						<span class="step1"></span><span class="step2"></span><span class="step3 step3-current"></span>
+					</div>
+				<!--tab菜单-->
+				<div class="tab-menu">
+                	<a event-node="register_change_related_user" href="{:U('public/Register/getRelatedUser')}" class="right">{:L('PUBLIC_CHANGE_USERS')}</a>						
+					<ul>
+						<li class="current"><a href="javascript:;">{:L('PUBLIC_RECOMMEND_USERS')}</a></li>
+					</ul>
+				</div>
+				<!--//tab菜单-->
+				<div class="face_name_list">
+					<ul model-node="related_user_list"></ul>
+					<p class="face_att"><label for="select_all_follow"><input id="select_all_follow" event-node="selectAllFollow" type="checkbox" class="s-ck" />{:L('PUBLIC_SELECT_ALL')}</label></p>
+				</div>
+				<div class="actionBtn mt15 clearfix">
+					<a class="btn-register left mr15" event-node="saveFollow" href="{:U('public/Register/bulkDoFollow')}">{:L('PUBLIC_SAVE')}</a>
+					<a href="{:U('public/Register/doStep4')}" class="left mt15"><span>{:L('PUBLIC_BACKUP')}&raquo;</span></a>
+				</div>
+				</div>
+			</div>
+			<!--//注册步骤-->
+		</div>
+	</div>
+</div>
+
+<script src="__THEME__/js/account/module.register.js"></script>
+<include file="__THEME__/public_footer" />

@@ -1,0 +1,15 @@
+@charset "utf-8";
+
+/* CSS Document 
+ * Design By niuwentao
+ * Ver: Sociax Team
+ */
+
+/*tab菜单*/
+.tab-menu{border-bottom:#eee solid 2px;margin:0 0 10px;height:32px;_border:none 0;_background:url(image/tab-menu-line.gif) repeat-x left bottom}
+.tab-menu ul li{float:left;height:32px;margin:0 20px 0 0}
+.tab-menu ul li span{display:block;float:left;height:14px;line-height:14px;padding:13px 0 5px}
+.tab-menu a:link,.tab-menu a:visited{color:#535353}
+.tab-menu a:hover {text-decoration:none}
+.tab-menu .current{border-bottom:#DD4B39 solid 2px}
+.tab-menu .current span{font-weight:700} 

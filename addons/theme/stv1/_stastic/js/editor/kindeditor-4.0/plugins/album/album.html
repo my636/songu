@@ -1,0 +1,225 @@
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Image</title>
+		<style type="text/css" rel="stylesheet">
+			body {
+				margin: 0;
+				font:12px/1.5 "sans serif",tahoma,verdana,helvetica;
+				background-color:#fff;
+				color:#222222;
+				overflow:hidden;
+			}
+			form {
+				margin:0;
+			}
+			label {
+				cursor:pointer;
+			}
+			#resetBtn {
+				margin-left:10px;
+				cursor:pointer;
+			}
+			.main {
+			margin: 0;
+			width:490px;
+			_width:500px;
+			padding-right:10px;
+			margin-top:10px;
+			margin-left:10px;
+			}
+			.clearfix:after {
+				content: ".";
+				display: block;
+				height: 0;
+				clear: both;
+				visibility: hidden;
+			}
+			.tab-navi {
+				border-bottom:1px solid #b5c8eb;
+				padding-left:5px;
+				width:98%;
+			}
+			.tab-navi ul  {
+				list-style-image:none;
+				list-style-position:outside;
+				list-style-type:none;
+				margin:0;
+				padding:0;
+			}
+			.tab-navi li {
+				position: relative;
+				background-color: #eef3fe;
+				margin: 0 4px -1px 0;
+				padding: 0 15px;
+				float: left;
+				line-height: 25px;
+				text-align: center;
+				color: #374152;
+				cursor: pointer;
+			}
+			.tab-navi li.selected {
+				background-color: #fff;
+				border: 1px solid #b5c8eb;
+				border-bottom: 1px solid #fff;
+				color: #374152;
+				cursor: default;
+			}
+			.table  {
+				list-style-image:none;
+				list-style-position:outside;
+				list-style-type:none;
+				margin:0;
+				padding:5px 0;
+				height:20px;
+				border:1px solid #b5c8eb;
+				border-top:0;
+				width:98%;
+				padding-left:5px;
+				color:#666
+			}
+			.table #tab2,.table #tab1{ margin-left:10px;}
+			.table li {
+				padding:0;
+				display:list-item;
+			}
+			.table li label {
+				font-weight:bold;
+			}
+			.table li input {
+				vertical-align:middle;
+			}
+			.table li img {
+				vertical-align:middle;
+			}
+			.selectPhoto{
+				color:red;
+			}
+			/*插图弹窗*/
+#photoList{ border:1px solid #b5c8eb; border-top:0; width:98%; padding-left:5px; height:335px;}
+#photoList span{ margin:10px 7px 10px 0 ; display: inline-block; cursor:pointer; border:1px solid #dee0e2; height:106px; width:106px;}
+#photoList span img{ padding:1px;margin-top:17px; margin-left:3px;}
+.selectPhoto{ background: url(images/pic_bg.gif) no-repeat; width:106px; height:106px; border:0}
+.select_font{ font-size:12px; color:#666; line-height:160%; padding-top:30px; }
+.select_font p{ color:#999}
+.main_right{float:left; width:167px;border:1px solid #aac1ea;margin-top:35px;}
+.main_right h3{ font-size:12px; text-align:center; width:100%; line-height:27px; height:27px; font-weight:normal; color:#3e4558; margin:0 auto; padding:0;border-bottom:1px solid #aac1ea;}
+.main_right .right_list span{border:1px solid #DEE0E2;cursor:pointer;display:block;height:106px;margin:10px 7px 10px 0;width:106px; margin-left:20px;}
+.main_right .right_list span img{ margin-top:10px; padding:1px;}
+		</style>
+	</head>
+	<body>
+	
+		<div class="main" style="float:left">
+			<div id="tabNavi" class="tab-navi">
+            <ul class="clearfix">
+					<li class="selected">插入相册图片</li>
+				</ul>
+			</div>
+			<div class="table">
+				<div id="tab1" >
+					<select id="albumList" onChange="javascript:selectAlbum()" style="width:280px;"> </select>
+					<span  id="errorInfo" style="color:red;overflow-y:scroll;"></span>
+				</div>
+			</div>
+			<div  class="select_font" id="photoList" style="overflow-y:scroll;"> 
+				<div>请从上面的下拉菜单选择已有的相册</div>
+				<p>提示：单击照片选中，可选择不同的相册、多张照片。并可以在右侧对“准备插入的图片”单击取消。</p>
+			</div>
+			<input type="hidden" id="selectId" value=","/>
+		</div>
+		
+			<div class="main_right">
+				<h3>准备插入的图片</h3>
+				<div class="right_list" id="selectPhotoList" style="overflow-y:scroll;  width:167px;height:368px;"></div>
+			</div>
+			<div style="clear:both"></div>
+	</body>
+</html>
+<script >
+	var albumListUrl	=	parent.SITE_URL+'/index.php?app=space&mod=Album&act=getAlbumList';
+	var albumPhotoUrl	=	parent.SITE_URL+'/index.php?app=space&mod=Album&act=getAlbumPhoto';
+	
+	var $P = parent.$;
+
+	var albumList 	= 	document.getElementById( 'albumList' );
+	var errorInfo	=	document.getElementById( 'errorInfo' );
+	
+	if(albumList.value ===""){
+		$P.post(albumListUrl,{},function(txt){
+			var data = eval( '('+txt+')' );
+			if(data==null || data==false){
+				errorInfo.innerHTML	=	'您还没有相册';
+			}else{
+				errorInfo.innerHTML	=	'';
+				albumList.options[albumList.options.length] = new Option('请选择相册',0);
+				$P.each(data,function(i,n){
+					albumList.options[albumList.options.length] = new Option(n.name,n.id);
+				});
+			}
+		});
+	}
+	function selectAlbum(){
+		var photoList		=	document.getElementById('photoList');
+		var selectId		=	document.getElementById('selectId').value;
+		
+		if(albumList.value > 0){
+			$P.post(albumPhotoUrl,{albumId:albumList.value},function(txt){
+				var data = eval( '('+txt+')' );
+				if(data==null || data==false){
+					errorInfo.innerHTML	=	'该相册没有图片或图片未审核';
+					photoList.innerHTML	= "";
+				}else{
+					errorInfo.innerHTML	=	'';
+					var optionlist	=	'';
+					$P.each(data,function(i,n){
+						if( selectId.lastIndexOf(','+n.id+',') > -1 ){
+							optionlist += '<span id="p_'+n.id+'" class="selectPhoto" onclick="selectPhoto(' +n.id+ ')"><img width="97" rel="'+n.imgsrc+'" height="75" id="img_'+n.id+'"src="'+n.imgsrcThumb+'" attachId="'+n.attachId+'" title="'+n.name+'" /></span>';
+						}else{
+							optionlist += '<span id="p_'+n.id+'"  onclick="selectPhoto(' +n.id+ ')"><img width="97" rel="'+n.imgsrc+'" height="75" id="img_'+n.id+'"src="'+n.imgsrcThumb+'" attachid="'+n.attachId+'" title="'+n.name+'" /></span>';
+						}
+					});
+					photoList.innerHTML	=	optionlist;
+				}
+			});
+		}
+	}
+	function selectPhoto(pid){
+		var photo	=	document.getElementById('p_'+pid);
+		var selectId	=	document.getElementById('selectId').value;
+		var selectPhotoList	=	document.getElementById('selectPhotoList');
+		var img	=	document.getElementById('img_'+pid);
+		
+		
+		if( photo.className	==	'selectPhoto' ){
+			photo.className	=	'';
+			selectId=selectId.replace(','+pid+',' , ',');
+			selectPhotoList.removeChild( document.getElementById('select_p_'+pid) );
+		}else{
+			photo.className	=	'selectPhoto';
+			selectId	+=	pid+',';
+
+			var src	= img.src;
+			var rel = img.attributes.getNamedItem('rel').value;
+			var title = img.attributes.getNamedItem('title').value;
+			var attachid	=	img.attributes.getNamedItem('attachid').value;
+			selectPhotoList.innerHTML	+=	'<span id="select_p_'+pid+'" ><img width="97" rel="'+rel+'" height="75" photoid="'+pid+'" attachId="'+attachid+'" id="select_img_'+pid+'"src="'+src+'" title="'+title+'" onclick="canclePhoto(' +pid+ ')"/></span>';
+		}
+		
+		document.getElementById('selectId').value	=	selectId;
+	}
+	function canclePhoto(pid){
+		var photo	=	document.getElementById('p_'+pid);
+		var selectId	=	document.getElementById('selectId').value;
+		var selectPhotoList	=	document.getElementById('selectPhotoList');
+		var img	=	document.getElementById('img_'+pid);
+
+		selectId=selectId.replace(','+pid+',' , ',');
+		selectPhotoList.removeChild( document.getElementById('select_p_'+pid) );
+		
+		if(photo){
+			photo.className	=	'';
+		}
+		document.getElementById('selectId').value	=	selectId;
+	}
+</script>

@@ -1,0 +1,24 @@
+<include file="__THEME__/public_header" />
+<link href="__APP__/account.css" rel="stylesheet" type="text/css" />
+    <div id="page-wrap">
+        <div id="main-wrap">
+            <div id="col" class="st-grid person-set boxShadow">
+            	<div id="col4" class="main-left">
+                    <!--tab菜单--><include file="_tabs" />
+                </div>
+                <div id="col7" class="main-right">
+                    <div class="extend minh">
+                    	<div class="set-hd"><h3>{$tabName}</h3></div>
+                    <!--信息设置项---基本信息-->
+                            <dl>
+                                <dd>
+                                    {:W('Tag', array('width'=>'500px', 'row_id'=>$mid))}
+                                </dd>
+                            </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="__THEME__/js/module.form.js"></script>
+<include file="__THEME__/public_footer" />

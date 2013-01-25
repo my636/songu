@@ -1,0 +1,87 @@
+<include file="__THEME__/public_header" />
+
+<div id="page-wrap">
+    <div id="main-wrap">
+        <div class="mb20 boxShadow clearfix extend">
+            <div class="app-title"><h4><img src="__APP__/image/ico-channel.gif" />频道<a href="javascript:void(0)"  event-node="insert_contribute" ></a><!-- <a href="javascript:ui.sendbox('投稿到频道', '','<php>echo $cid;</php>');" style="float:right;">投稿</a> --></h4></div>
+            <div class="app-tab-menu">
+                <dl>
+                    <dt>
+                        <volist name="channelCategory" id="vo">
+                        <a href="{:U('channel/Index/index', array('cid'=>$vo['channel_category_id']))}" <eq name="cid" value="$vo['channel_category_id']">class="current"</eq>>{$vo.title}</a>
+                        </volist>
+                    </dt>
+                </dl>
+            </div>
+        </div>
+
+        <div id="container" class="mb10 channel-list clearfix">
+            <volist name="data" id="vo">
+            <div class="box channel-list-l boxShadow" id="feed_{$vo.feed_id}">
+                <div class="channel-user-conntent mb10 feed_list">   
+                    <php>if($vo['type'] == 'postimage'):</php>
+                    <div class="pic mb10">
+                        <ul>
+                            <li>
+                                <a href="{:U('public/Profile/feed', array('feed_id'=>$vo['feed_id'],'uid'=>$vo['user_info']['uid']))}"><img width="{$vo.width}" height="{$vo.height}" src="{$vo.attachInfo}" /></a>
+                            </li>                                                
+                       </ul>
+                       <php>if(count($vo['attach_id']) > 1):</php>
+                        <div class="pic-more">
+                            <a href="{:U('public/Profile/feed', array('feed_id'=>$vo['feed_id'],'uid'=>$vo['user_info']['uid']))}" target="_blank">点击查看全部图片</a>
+                        </div>
+                      <php>endif;</php>
+                    </div>
+                    <php>endif;</php>
+                    <p>{$vo.user_info.space_link}
+                        <volist name="vo['GroupData'][$vo['uid']]" id="v">
+                        <a href="javascript:;"><img src="{$v['user_group_icon_url']}" title="{$v['user_group_name']}" rel="{$v['user_group_name']}" /></a>
+                        </volist>：
+                        {$vo.body|format=true}</p>
+                    <php>if($vo['type'] == 'postfile'):</php>
+                    <ul>
+                        <volist name="vo.attachInfo" id="v">
+                        <li>
+                            <i class="ico-{$v.extension}-small"></i>
+                            <a href="{:U('widget/Upload/down',array('attach_id'=>$v['attach_id']))}" title="{$v.name}">{$v.name|getShort=###, 10, '...'}</a>
+                        </li>
+                        </volist>
+                    </ul>
+                    <php>endif;</php>
+
+                </div>
+                <div class="channel-user-share">
+                    <span class="right f9" style="display:none;" event-node="show_admin" event-args="feed_id={$vo.feed_id}&uid={$vo.user_info.uid}&channel_recommend={:CheckPermission('channel_admin','channel_recommend')}">管理</span>
+                    <span>
+                        <php>if(CheckPermission('core_normal','feed_share')){</php>
+                            <a event-node="share" event-args="sid={$vo.feed_id}&stable=feed&curtable=feed&curid={$vo.feed_id}&initHTML=&appname=public&cancomment=1" href="javascript:;"><i class="ico-forward"></i>({$vo.repost_count})</a>
+                        <php>}</php>
+                        {:W('Collection',array('sid'=>$vo['feed_id'],'stable'=>'feed','sapp'=>'public','ico'=>'ico-favorites','tpl'=>'ico'))}
+                        <a href="{:U('public/Profile/feed', array('feed_id'=>$vo['feed_id'],'uid'=>$vo['user_info']['uid']))}"><i class="ico-comment"></i>({$vo.comment_count})</a>
+                    </span>
+                </div>
+                <a href="{:U('public/Profile/feed', array('feed_id'=>$vo['feed_id'],'uid'=>$vo['user_info']['uid']))}" target="_blank"><i class="ico-detail"></i></a>
+            </div>
+            </volist>
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript" src="__APP__/jquery.masonry.min.js"></script>
+<script type="text/javascript" src="__APP__/channel.js"></script>
+<script type="text/javascript">
+// 载入瀑布流
+$(function() {
+    $('#container').masonry({
+        itemSelector: ".box",
+        gutterWidth: 20
+    }); 
+    // 频道Js配置
+    channel.setting.cid = "{$cid}";
+    channel.setting.loadId = "{$loadId}";
+    channel.bindScroll();
+});
+</script>
+
+<include file="__THEME__/public_footer" />

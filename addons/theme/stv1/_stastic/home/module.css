@@ -1,0 +1,251 @@
+@charset "utf-8";
+
+/* CSS Document 
+ * Design By niuwentao
+ * Ver: Sociax Team
+ */
+ 
+/*feed-lists*/
+.feed_lists{overflow:hidden}
+.feed_list{border-bottom:#eee solid 1px;margin:0 0 15px;padding:0 0 15px;overflow:hidden;*zoom:1}
+.feed_list .face {display: inline;float: left;padding: 3px 0 6px;width: 50px}
+.feed_list .content {font-size: 14px;line-height: 22px;margin: 0 0 0 60px}
+.feed_list .content p.hd{padding:0}
+.feed_list .content p.hd a.date {float:right;font-size: 12px;color:#bbb}
+.feed_list .content p{padding:0 0 10px}
+.feed_list .comment{font-size:12px;color:#666;background-color:#f9f9f9;padding:10px;border:#F2F2F2 solid 1px;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;}
+.feed_list .comment dt{margin:10px 0}
+.feed_list .comment dt.no_border{margin:0;padding:0 0 10px;line-height:15px;color:#ddd}
+.feed_list .comment dt.no_border a{margin:0}
+.feed_list .content p.info{font-size: 12px;color:#ddd;padding:5px 0 0;line-height:15px;overflow:hidden;*zoom:1}
+.feed_list .content p.info span{float:right}
+.feed_list .content p.border{border-bottom:#F2F2F2 solid 1px}
+.feed_list .info a:link,.feed_list .info a:visited{color:#99B2E5}
+.feed_list .info .date{margin:0 10px 0 0}
+.feed_list .expand{padding:0}
+.feed_list .arrow{height: 11px;margin: -20px 0 0;overflow: hidden;width: 25px}
+.feed_list .bgcolor_arrow{color:#F2F2F2}
+.feed_list .arrow,.feed_list .arrline,.feed_list .comment span{display: block;font-family: "SimSun";font-size: 21px;height: 10px;overflow: hidden}	
+.feed_list .comment span{margin:-9px 0 0}
+.feed_list .comment span{color:#f9f9f9}
+
+/*图片微博查看大图*/
+.feed_list .pack_up,.feed_list .show_big,.feed_list .turn_left,.feed_list .turn_right{background:url(image/icon.png) no-repeat 0 -610px;display:inline-block;padding:0 0 0 13px}
+.feed_list .show_big{background-position:0 -497px}
+.feed_list .turn_left{background-position:0 -523px}
+.feed_list .turn_right{background-position:0 -552px}
+
+/*微博评论*/
+.feed_list .repeat {position:relative;font-size: 12px;margin: 10px 0 7px;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;*zoom:1}
+.feed_list .action{padding:10px 0 0}
+.feed_list .action .btn-at{float:right}
+.feed_list .action .faces{float:left;background:url(image/icon.png) no-repeat 0 0;display:inline-block;width:16px;height:16px;margin:0 10px 0 0;cursor:pointer}
+.feed_list .repeat .arrow{margin:0 0 0 60px;position:absolute;height:8px;width:14px;top:-7px}
+.feed_list .repeat .arrow-t{background-position:0 -58px}
+.feed_list .repeat .input{padding:10px 0 0}
+.feed_list .repeat .input textarea{border:#DCDCDC solid 1px;border-top-color:#B5B5B5;width:444px;height:20px;padding:4px 4px 0;overflow:hidden}
+.feed_list .repeat .commoned_list{float:left;margin:-3px 0 0}
+.comment_lists{padding:8px 0 0;border-top:#EBEBEB solid 1px}
+.comment_list{border-bottom:#eee dashed 1px;clear: both;margin-bottom: 8px;overflow: hidden;padding-bottom: 8px}
+.comment_list dt{float:left;width:30px;margin:0 10px 0 0}
+.comment_list dd{line-height:20px;margin:0 0 0 40px;word-wrap:break-word;}
+.comment_list dd span.time{color:#bbb}
+
+/*微博新消息*/
+.feed_lists a.notes{height:18px;line-height:18px;display:block;padding:5px 0;margin:0 0 15px;text-align:center;background-color:#FEFCE7;color:#8A806D}
+
+/*微博加载*/
+.feed_lists .load{background:#F5F6F7;height:18px;line-height:18px;padding:8px 0;text-align:center;color:#999;border-top:#EBEBEB solid 1px}
+.feed_lists .load img{vertical-align:middle;margin:0 0 0 5px}
+
+/*微博发布框*/
+.send_weibo{margin:0 20px 15px}
+.send_weibo .title{font-size:14px;padding:10px 0}
+.send_weibo .input{position:relative}
+.send_weibo .input .input_before{height:30px;border:#ddd solid 1px;position:relative}
+.send_weibo .input .input_tips{display:block}
+.send_weibo .input .input_tips h4{color:#ddd;height:30px;line-height:30px;padding:0 8px;font-size:12px;cursor:text}
+.send_weibo .acts{position:absolute;right:8px;bottom:8px}
+			.acts .face,.acts .image,.acts .video,.acts .file,.acts .at{width:16px;height:16px;float:left;margin:0 10px 0 0}
+
+/*上传头像*/
+.form-avatar p{padding:5px 0 0}
+.form-avatar{padding:20px}
+.form-avatar dd{padding:0 0 15px;overflow:hidden;*zoom:1}
+.form-avatar .input-row{margin:0 0 0 80px;position:relative}
+.form-avatar .input-row textarea{border:#DCDCDC solid 1px;border-top-color:#B5B5B5;width:300px;height:120px;padding:4px 4px 0;overflow:hidden}
+.form-avatar .s-txt, .form-avatar .s-txt-focus{width:300px; margin:0 5px 0 0;vertical-align:middle;*margin-left:-20px}
+.form-avatar .mod-avatar{position:relative}
+.form-avatar .mod-avatar a{display:block;float:left;text-align:center}
+.form-avatar .mod-avatar a.cut-1{width:200px;padding:0 30px 0 0}
+.form-avatar .mod-avatar a.cut-2{width:48px;padding:152px 0 0}
+.form-avatar .mod-avatar a.cut-3{width:48px;padding:180px 0 0 15px}
+
+/*标签*/
+.tag-lists{padding:10px 0;overflow:hidden;*zoom:1}
+.tag-lists .taglist li{float:left;background:#9EC97F;height:14px;line-height:14px;padding:5px;margin:0 5px 0 0;cursor:pointer}
+.tag-lists .taglist li:hover{background:#3C9100;cursor:pointer}
+.tag-lists .taglist li a.tag:link, .tag-lists .taglist li a.tag:visited{display:inline-block;color:#fff;padding:0 5px}
+.tag-lists .taglist li a.tag:hover{text-decoration:none}
+
+.setupTag_list01 {clear: both;margin-top: 6px;overflow: hidden}
+.setupTag_list01 a:link,.setupTag_list01 a:visited {display: inline-block;line-height: 20px;padding: 2px 5px;color:#36c}
+.setupTag_list01 a em {font-style:normal;color: #ddd;font-family: Arial;font-weight:700;font-size: 17px;margin-right: 2px;vertical-align: -2px}
+.setupTag_list01 a:hover {background-color: #9EC97F;color: #fff;text-decoration: none}
+.setupTag_list01 a:hover em {color: #fff;cursor: pointer;font-size: 17px;font-weight: bold}
+
+/*弹窗*/
+.wrap-layer{margin:20px 0 0 20px;color:#535353;}
+.wrap-layer .content-layer{border:#ccc solid 1px;width:494px;color:#bbb;position:relative}
+.wrap-layer .content-layer .hd{background:#F9F9F9;font-weight:700;font-size:14px;padding:9px 15px;height:18px;line-height:18px}
+.wrap-layer .content-layer .del{position:absolute;right:12px;top:12px}
+.wrap-layer .content-layer textarea{color:#535353;}
+
+.wrap-layer .content-layer .pop .form-tt{width:40px;display:block;float:left}
+.wrap-layer .content-layer .pop .form-row{margin:0 0 0 40px}
+.wrap-layer .content-layer .pop dd{padding:0 0 10px }
+.wrap-layer .content-layer .pop .s-txt{margin:0 5px 0 0}
+.wrap-layer .content-layer .pop dd:after{clear: both;content: ".";display: block;height: 0;visibility: hidden}
+.wrap-layer .content-layer .pop .s-txt, .wrap-layer .content-layer .pop .s-txt-focus{width:182px;vertical-align:middle}
+.wrap-layer .content-layer .pop .double{margin-top:10px;_margin-left:43px}
+.wrap-layer .content-layer .pop .ico-add{margin:0 5px}
+
+.layer-invite, .layer-letter, .layer-forward{padding:15px;*zoom:1}
+.layer-invite .s-txt{width:182px;}
+.layer-invite textarea{width:414px;height:60px;_width:410px}
+.layer-invite .btn-at{margin:0 0 0 40px}
+
+.wrap-layer .content-layer .layer-letter .form-tt{width:60px;display:block;float:left}
+.wrap-layer .content-layer .layer-letter .form-row{margin:0 0 0 60px}
+.layer-letter textarea{width:394px;height:60px;_width:390px}
+.layer-letter .s-txt{width:392px;}
+.layer-letter .btn-at{margin:0 0 0 60px}
+
+.layer-forward .forward-content{background:#FAFAFA;padding:6px 10px;margin:0 0 5px}
+.layer-forward .feed-repeat{line-height:20px}
+.layer-forward .feed-repeat .action .faces{float:left;background:url(image/icon.png) no-repeat 0 0;display:inline-block;width:16px;height:16px;margin:0 10px 0 0;cursor:pointer}
+.layer-forward .feed-repeat .input {position: relative}
+.layer-forward .feed-repeat .input .action{margin:10px 0 0;*zoom:1}
+.layer-forward .feed-repeat .input .commoned_list{float:left}
+.layer-forward .feed-repeat .input .btn-at{float:right}
+.layer-forward .feed-repeat textarea{width:455px;height:60px;margin:10px 0 0}
+.layer-forward .feed-repeat .num {color: #B8B7B7;float: right;margin-top: -5px;position: relative;text-align: right}
+.layer-forward .feed-repeat .num span {font-family: Constantia,Georgia;font-size: 22px;font-weight: 700;margin: 0 5px}
+
+/*提示删除弹窗*/
+.layer-prompt{padding:15px;text-align:center}
+.layer-prompt p{padding:10px 0;font-size:14px}
+.layer-prompt a{margin:0 5px;font-size:12px}
+
+/*关注分组设置弹窗*/
+.layer-follow{padding:15px}
+.layer-follow .tit{padding:0 0 10px;overflow:hidden;*zoom:1}
+.layer-follow .tit strong{padding:0 5px}
+.layer-follow .group-list{background:#FAFAFA;padding:10px;margin:0 0 10px;color:#535353}
+.layer-follow .group-list ul{overflow:hidden;*zoom:1}
+.layer-follow .group-list li{padding:5px 0;width:45%;display:block;vertical-align:top;float:left}
+.wrap-layer .content-layer .layer-follow .tit .s-txt{width:380px;margin:0 0 0 5px}
+.wrap-layer .content-layer .layer-follow .tit .s-txt-focus{width:380px;margin:0 0 0 5px}
+
+/*用户联想*/
+.layer-menu-list{margin:20px 0 20px 20px;width:200px;position:absolute}
+.layer-menu-list .ft{background:#f6f6f6;padding:5px 8px;height:18px;line-height:18px;color:#999}
+.layer-menu-list .menu-list{border:#CCC solid 1px}
+.layer-menu-list .menu-list .menu-list-scroll{height:130px;overflow-y:auto;padding:5px 0}
+.layer-menu-list .menu-list dl{padding:3px 8px;*zoom:1}
+.layer-menu-list .menu-list dl:hover {background:#eee;cursor:pointer}
+.layer-menu-list .menu-list dt{float:left;width:20px;height:20px;margin:0 10px 0 0}
+.layer-menu-list .menu-list dd{margin:0 0 0 30px;color:#bbb;height:16px;line-height:16px;padding:2px 0;overflow:hidden;word-wrap:break-word;text-overflow:ellipsis; white-space:nowrap;_width:132px}
+.layer-menu-list .arrow-t{margin: 0 0 0 10px;position: absolute;top: -7px;left: 0}
+
+/*文件上传弹窗*/
+.layer-file{width:430px;margin:20px 0 20px 20px;position:absolute;top:20px;left:600px}
+.layer-file .del{position:absolute;top:10px;right:10px}
+.layer-file .arrow-t{margin: 0 0 0 10px;position: absolute;top: -7px;left: 0}
+
+/*表情弹窗*/
+.layer-face{width:430px;margin:20px 0 20px 20px;position:absolute;top:600px;left:600px}
+.layer-face .del{position:absolute;top:10px;right:10px}
+.layer-face .arrow-t{margin: 0 0 0 10px;position: absolute;top: -7px;left: 0}
+.layer-face .face-list{overflow:hidden;*zoom:1}
+.layer-face .face-list li {float:left;}
+.layer-face .face-list li a:link, .layer-face .face-list li a:visited{width:16px;height:16px;display:block;border:#EEEEEE solid 1px;padding:2px;margin:0 2px 2px 0}
+.layer-face .face-list li a:hover{border:#f60 solid 1px}
+.layer-face .face-list li img{width:16px;height:16px}
+
+/*上传图片弹窗*/
+.layer-photos{width:430px;margin:20px 0 20px 20px;position:absolute;top:180px;left:600px}
+.layer-photos .del{position:absolute;top:10px;right:10px}
+.layer-photos .arrow-t{margin: 0 0 0 10px;position: absolute;top: -7px;left: 0}
+.layer-photos .photo-list{margin:0 -10px;overflow:hidden;*zoom:1/*for Ie6,Ie7*/}
+.layer-photos .photo-list li{float:left;position:relative;margin:5px 0 5px 10px;_margin:5px 0 5px 5px}
+.layer-photos .photo-list li .hover{visibility:hidden}
+.layer-photos .photo-list li:hover .hover{visibility:visible}
+.layer-photos .photo-list li .del{top:4px;right:4px;background-position:0 -52px;width:15px;height:15px}
+.layer-photos .photo-list li img{width:120px;height:120px;border:#ddd solid 4px}
+.layer-photos .photo-list li a.add-photo:link, .layer-photos .photo-list li a.add-photo:visited{color:#999;text-align:center;background:url(image/add-photo.png) no-repeat 0 0;display:block;width:128px;height:128px}
+.layer-photos .photo-list li a.add-photo span{display:block;padding:100px 0 0}
+
+.layer-inner{border:#CCCCCC solid 1px;color:#999}
+.layer-inner .layer-content{padding:10px}
+.layer-inner .layer-content p{padding:0 0 10px}
+.layer-inner .layer-content .action{text-align:center}
+
+/*进度条*/
+.progress-bar{padding:10px 0;height:22px}
+.progress-bar .progress-num{float:left;padding:0 0 0 10px;line-height:22px;font-size:18px;font-weight:700;color:#535353}
+.progress-bar .progress{float:left;width:322px}
+.progress-bar .progress span, .progress-bar .progress em{height:22px;background:url(image/progress-bg.png) no-repeat 0 0;display:block;}
+.progress-bar .progress em{background-position:0 -32px}
+
+/*关闭图标*/
+.del, .del:hover{background:url(image/del.png) no-repeat 0 0;width:9px;height:9px;display:inline-block }
+.del:hover{background-position:0 -26px}
+
+/*页码*/
+.page{padding:10px 0;text-align:right}
+.page a:link, .page a:visited{display: inline-block;
+  *display: inline;
+  /* IE7 inline-block hack */
+  *zoom: 1;
+  padding: 4px 10px 4px;
+  margin-bottom: 0;
+  line-height: 14px;
+  color: #999;
+  text-align: center;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  vertical-align: middle;
+  background-color: #f5f5f5;
+  background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: -ms-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
+  background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: linear-gradient(top, #ffffff, #e6e6e6);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e6e6e6', GradientType=0);
+  border-color: #DDDDDD #DDDDDD #bfbfbf;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+  border: 1px solid #DDDDDD;
+  border-bottom-color: #DDDDDD;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  *margin-left: .3em;
+}
+.page a:hover{color: #535353;
+  text-decoration: none;
+  background-color: #e6e6e6;
+  background-position: 0 -15px;
+  -webkit-transition: background-position 0.1s linear;
+  -moz-transition: background-position 0.1s linear;
+  -ms-transition: background-position 0.1s linear;
+  -o-transition: background-position 0.1s linear;
+  transition: background-position 0.1s linear;
+}
+.page a.current{padding:0 10px}

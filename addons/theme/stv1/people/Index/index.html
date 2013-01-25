@@ -1,0 +1,54 @@
+<include file="__THEME__/public_header" />
+
+<div id="page-wrap">
+  <div id="main-wrap">
+    <div class="boxShadow">
+
+      <div class="find-type clearfix">
+        <div class="app-title clearfix">
+          <div class="app-tab-menu">
+            <ul>
+              <li>
+                <a <eq name="type" value="verify">class="current"</eq> href="{:U('people/Index/index', array('type'=>'verify'))}">认证用户<eq name="type" value="verify"><span class="triangle"></span></eq></a>
+                <i class="line"></i>
+              </li>
+              <li>
+                <a <eq name="type" value="official">class="current"</eq> href="{:U('people/Index/index', array('type'=>'official'))}">官方推荐<eq name="type" value="official"><span class="triangle"></span></eq></a>
+                <i class="line"></i>
+              </li>
+              <li>
+                <a <eq name="type" value="industry">class="current"</eq> href="{:U('people/Index/index', array('type'=>'industry'))}">按行业<eq name="type" value="industry"><span class="triangle"></span></eq></a>
+                <i class="line"></i>
+              </li>
+              <li>
+                <a <eq name="type" value="area">class="current"</eq> href="{:U('people/Index/index', array('type'=>'area'))}">按地区<eq name="type" value="area"><span class="triangle"></span></eq></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div id="col" class="extend clearfix">
+        <div id="col9" class="st-index-right">
+          <php>if(in_array($type, array('industry','area'))):</php>
+          {:W('Filter', array('cid'=>$cid,'sex'=>$sex,'area'=>$area,'verify'=>$verify,'type'=>$type))}
+          <php>endif;</php>
+          <php>if(in_array($type, array('verify','official')) && !empty($topUser)):</php>
+          {:W('Face', array('uids'=>$topUser,'type'=>$type))}
+          <php>endif;</php>
+
+          <php>if(in_array($type, array('verify', 'official'))):</php>
+          {:W('UserList', array('cid'=>$cid,'uids'=>$topUser,'type'=>$type))}
+          <php>else:</php>
+          {:W('UserList', array('cid'=>$cid,'sex'=>$sex,'area'=>$area,'verify'=>$verify,'type'=>$type))}
+          <php>endif;</php>
+        </div>
+          <div id="col0">
+            {:W('Menu', array('cid'=>$cid,'sex'=>$sex,'area'=>$area,'verify'=>$verify,'type'=>$type))}
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<include file="__THEME__/public_footer" />

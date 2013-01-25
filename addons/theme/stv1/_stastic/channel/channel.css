@@ -1,0 +1,31 @@
+/*图标*/
+.ico-comment{background-position:-219px -66px;width:16px;height:16px;display:inline-block;vertical-align:-6px;*vertical-align:-3px}
+.ico-forward{background-position:-219px 0;width:16px;height:16px;display:inline-block;vertical-align:-5px;*vertical-align:-3px}
+.ico-favorites{background-position:-219px -33px;width:16px;height:16px;display:inline-block;vertical-align:-4px;*vertical-align:-2px}
+.channel-user-share .ico-favorites.current{background-position:-219px -99px;width:16px;height:16px;display:inline-block;vertical-align:-4px;*vertical-align:-2px}
+.ico-detail{background-position:-259px -35px;display:inline-block;width:15px;height:15px;cursor:pointer}
+
+.channel-title{padding:20px;}
+.channel-title img{margin:0 10px 0 0;}
+.channel-title h4{color:#0F8CA8;font-size:20px;font-family:"微软雅黑"}
+.channel-type a{width:95px;height:36px;line-height:36px;text-align:center;color:#333;font-size:14px;background:#e9ecee;margin:0 1px 0 0;display:inline-block;}
+.channel-type a.no-margin{margin:0;width:96px;}
+.channel-type a:hover,.channel-type a.current{background:#0F8CA8;color:#fff;}
+.channel-list-k{float:left;margin:0 20px 0 0;position:relative;}
+.channel-list-k.no-margin{margin:0;}
+.channel-list-l{padding:15px;width:195px;margin:0 0 20px 0;}
+.channel-user-info dt{float:left;width:30px;height:30px;}
+.channel-user-info dd{margin-left:40px;font-size:14px}
+.channel-user-info dd img{margin:0 0 0 5px;vertical-align:-3px}
+.channel-user-conntent{border-bottom:1px dotted #ddd;padding:0 0 10px 0;margin:0 0 10px 0;}
+.channel-user-conntent p{line-height:20px;}
+.channel-user-conntent dd{line-height:22px}
+.channel-user-share{position:relative;}
+.channel-user-share .right{cursor:pointer}
+.channel-user-share span a:link,.channel-user-share span a:visited{margin:0 5px 0 0;color:#ccc;display:inline-block;cursor:pointer;}
+.channel-user-share a i{margin:0 3px 0 0;}
+.channel-blank{background:#f1f9fb;}
+.channel-list-l .ico-detail{position:absolute;top:0;right:0;visibility:hidden;_visibility:visible;}
+.channel-list-l:hover .ico-detail{visibility:visible;}
+
+.boxy-modal-blackout-channel { position: absolute;background:red;left: 0; top: 0;filter:alpha(opacity=20); /*IE*/-moz-opacity:0.2; /*MOZ , FF*/opacity:0.2;}

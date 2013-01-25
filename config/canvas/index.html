@@ -1,0 +1,20 @@
+<include file="__THEME__/_header" />
+<include file="__THEME__/diy_header" />
+<link href="__APP__/Public/css/diy_adaptable.css" rel="stylesheet" type="text/css" />
+<link href="__APP__/Public/css/index.css" rel="stylesheet" type="text/css" />
+<link href="__APP__/Public/css/pop_up.css" rel="stylesheet" type="text/css" />
+<div class="diy_content bg_diy" style="width:1600px">
+{$data}
+    <div class="C">
+    </div>
+
+
+</div>
+
+</div><!--page end-->
+{:Addons::hook('public_footer')}
+</body>
+</html>
+<eq name='site.site_online_count' value='1'>
+<script src="{:SITE_URL}/online_check.php?uid={$mid}&uname={$user.uname}&mod={:MODULE_NAME}&app={:APP_NAME}&act={:ACTION_NAME}&action=trace"></script>
+</eq>

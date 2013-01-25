@@ -1,0 +1,13 @@
+<textarea  class="in_put" name="{$contentName}" id="{$contentName}" style="width:{$width}px;_width:{$width}px;height:{$height}px" >{$value}</textarea>
+
+<script type="text/javascript" src="__THEME__/js/editor/kindeditor-4.1.1/kindeditor.js"></script>
+
+<script >
+var Editor_<php>echo $contentName;</php>;
+setTimeout(function() {
+    Editor_<php>echo $contentName;</php> = KindEditor.create('textarea[name="<php>echo $contentName;</php>"]', {
+      langType : '<php>echo getLang();</php>',
+      uploadJson: '<php>echo U("widget/Upload/saveEditorImg");</php>'
+    });  
+}, '0');
+</script>

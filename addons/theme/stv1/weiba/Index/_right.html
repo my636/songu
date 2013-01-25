@@ -1,0 +1,17 @@
+<div id="col3" class="st-index-right">
+  <div class="right-wrap">
+     <div class="weiba-rank-list">
+       <h3>微吧排行榜</h3>
+       <ul>
+          <volist name="weiba_order" id="v1">
+              <li><i class="ico-num ico-num{$i}"></i>
+                  <dl>
+                     <dt><a href="{:U('weiba/Index/detail',array('weiba_id'=>$v1['weiba_id']))}"><img src="{$v1.logo}" width="30" height="30" /></a></dt>
+                     <dd><p><a href="{:U('weiba/Index/detail',array('weiba_id'=>$v1['weiba_id']))}">{$v1.weiba_name}</a></p><p>粉丝数：{$v1.follower_count|default=0}  帖子数：{$v1.thread_count|default=0}</p></dd>
+                  </dl>
+              </li>
+          </volist>
+       </ul>
+     </div>  
+  </div>
+</div>

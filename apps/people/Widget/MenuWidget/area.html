@@ -1,0 +1,15 @@
+<div class="area-type-lists">
+<div class="area-type-list clearfix" style="border:0;height:auto;">
+   <p>按地区查找</p>
+   <ul>
+   <li>
+      <a class="first <eq name="area" value="0">current</eq>" href="{:U('people/Index/index', array('area'=>0,'type'=>$type))}">全　部</a>
+   </li>
+   <volist name="menu" id="vo">
+   <li>
+      <a <eq name="area" value="$vo.id"> class="current"</eq> href="{:U('people/Index/index', array('area'=>$vo['id'],'type'=>$type))}">{$vo.title}</a>
+   </li>
+   </volist>
+   </ul>
+</div>
+</div>

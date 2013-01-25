@@ -1,0 +1,46 @@
+<include file="__THEME__/public_header" />
+
+<link href="__APP__/weiba.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__APP__/weiba.js"></script>
+    
+
+<div id="page-wrap">
+	   <div id="main-wrap">
+	   	   	<div class="boxShadow"> 
+             <include file="_weiba_header" />
+           
+	   	   	   <div class="mb10 clearfix content-bg">
+
+                 <include file="_right" />
+
+                 <div id="col5" class="st-index-main">
+                    <div class="extend-foot">
+                       <div class="weiba-pic">
+                          <div class="weiba-pic-title"><a class="right" href="{:U('weiba/Index/weibaList')}">更多微吧</a><h3>微吧推荐</h3></div>
+                          <ul>
+                            <volist name="weiba_recommend" id="vo">
+                                <li <php>if(is_int($i/5)){</php>class="no-margin"<php>}</php>>
+                                    <div class="weiba-pic-l pic"><a href="{:U('weiba/Index/detail',array('weiba_id'=>$vo['weiba_id']))}"><img src="{$vo.logo}" width="100" height="100"/><div class="pic-more"></div>{:W('FollowWeiba',array('weiba_id'=>$vo['weiba_id'],'follow_state'=>array('following'=>$follow_state[$vo['weiba_id']]['following'])))}</div><a href="{:U('weiba/Index/detail',array('weiba_id'=>$vo['weiba_id']))}" class="weiba-name">{$vo.weiba_name}</a>
+                                </li>
+                            </volist>
+                           </ul>
+                        </div>
+                        
+                        <div class="weiba-list">
+                           <div class="weiba-pic-title"><a class="right" href="{:U('weiba/Index/postList')}">更多帖子</a><h3>热帖推荐</h3></div>
+                           <ul>
+                            <volist name="post_recommend" id="vo">
+                                <li <php>if(is_integer($i/2)){</php>class="no-margin"<php>}</php>>
+                                    <a class="right f9" href="{:U('weiba/Index/detail',array('weiba_id'=>$vo['weiba_id']))}">[{$vo.weiba}]</a><span><i class="ico-piece"></i><a target="_blank" href="{:U('weiba/Index/postDetail',array('post_id'=>$vo['post_id']))}">{$vo.title|getShort=16}<php>if(strstr($vo['content'],'<img')){</php><i class="ico-img"></i><php>}</php></a></span>
+                                </li>
+                            </volist>
+                           </ul>
+                        </div>
+                     </div>
+                 </div>
+           	 </div>
+         </div>
+	   </div>
+</div>
+
+<include file="__THEME__/public_footer" />

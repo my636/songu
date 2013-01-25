@@ -1,0 +1,9 @@
+<div id="col3" class="st-index-right">
+	<div class="right-wrap">
+        {:W('UserInformation', array('uid'=>$mid, 'tpl'=>'right', 'isReturn'=>$isReturn))}
+        {:W('CheckIn')}
+        <div class="clearfix mb20 pb20 border-b"><a href="{:U('public/Task/index')}" class="btn-task left" target="_blank"><span>做任务</span></a><a href="{:U('public/Rank/index')}" class="btn-account right" target="_blank"><span>比排名</span></a></div>
+        {:Addons::hook('home_index_right_top')}
+        {:W('TopicList',array('type'=>1, 'limit'=>10))}
+	</div>
+</div>
